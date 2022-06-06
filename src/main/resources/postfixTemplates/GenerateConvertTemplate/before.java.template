@@ -1,0 +1,27 @@
+import lombok.Data;
+
+public class App {
+
+    public void test() {
+        Foo src = new Foo();
+        Foo dest = new Foo();
+        <spot>dest.setTestInt(src.getTestInt());</spot>$key
+
+    }
+
+}
+
+@Data
+class Foo {
+
+    private Integer testInt;
+
+    private Long testLong;
+
+    private Float testFloat;
+
+    private Double testDouble;
+
+    private Boolean testBoolean;
+
+}
