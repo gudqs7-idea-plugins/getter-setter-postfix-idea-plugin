@@ -45,9 +45,9 @@ Also, feel free to post on the [Github Forum](https://github.com/docer-savior/do
 
 #### Code structure description
 
-There are 3 main packages under cn.gudqs7.plugins, namely `common / diagnostic / xxx`, which function as follows:
+There are 3 main packages under cn.gudqs7.plugins, namely `common / diagnostic / generate`, which function as follows:
 - common: some common classes, tools and base classes
 - diagnostic: access IDEA exception handling component
-- xxx: xxx
+- generate: the main package for generating getter setters
 
 > For more code questions or suggestions, please contact me by email or issue!

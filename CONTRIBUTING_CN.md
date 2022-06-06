@@ -45,9 +45,9 @@
 
 #### 代码结构说明
 
-cn.gudqs7.plugins 下有 3 个主要的包，即 `common / diagnostic / xxx`，作用如下：
+cn.gudqs7.plugins 下有 3 个主要的包，即 `common / diagnostic / generate`，作用如下：
 - common: 一些公共的类，工具及基类
 - diagnostic: 接入 IDEA 异常处理组件
-- xxx: xxx
+- generate: 生成 getter / setter 的主要包
 
 > 更多代码上的疑问或是建议欢迎通过邮件或提 Issue 来咨询我！

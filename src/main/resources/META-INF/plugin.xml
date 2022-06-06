@@ -1,6 +1,6 @@
 <idea-plugin>
-    <id>gudqs7.github.io.xxx</id>
-    <name>Xxx</name>
+    <id>gudqs7.github.io.getter-setter-postfix</id>
+    <name>GenerateAllSetter Postfix Completion</name>
     <vendor email="gudqs7@gmail.com" url="https://github.com/gudqs7">gudqs7</vendor>
 
     <description><![CDATA[ Description will be added by gradle build]]></description>
