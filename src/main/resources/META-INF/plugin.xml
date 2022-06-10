@@ -15,7 +15,7 @@
     <depends>com.intellij.modules.java</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <errorHandler implementation="cn.gudqs7.plugins.diagnostic.XxxIssueSubmitter"/>
+        <errorHandler implementation="cn.gudqs7.plugins.diagnostic.SetterPostfixIssueSubmitter"/>
         <notificationGroup displayType="BALLOON" id="Tip" bundle="group" key="notification.group.tip.name"/>
         <notificationGroup displayType="STICKY_BALLOON" id="Error" bundle="group" key="notification.group.error.name"/>
 

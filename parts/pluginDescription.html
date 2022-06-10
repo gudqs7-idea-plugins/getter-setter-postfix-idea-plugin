@@ -1,18 +1,181 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
+<a href="https://github.com/docer-savior/getter-setter-postfix-idea-plugin">GitHub</a> |
+<a href="https://github.com/docer-savior/getter-setter-postfix-idea-plugin/issues">Issues</a> |
+<a href="https://github.com/docer-savior/getter-setter-postfix-idea-plugin/wiki/%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B">Get
+    Started</a> |
+<a href="https://github.com/docer-savior/getter-setter-postfix-idea-plugin/blob/master/LICENSE">LICENSE</a>
+<br/>
 
-<h2>Similar to GenerateAllSetter, but triggered by a suffix (i.e. similar to .var usage)!</h2>
+<hr/>
 
+<p>若图片显示不全，请<a href="https://github.com/docer-savior/getter-setter-postfix-idea-plugin/blob/master/README.md">点此打开</a>到网页上查看
+</p>
+<p><a href="https://github.com/docer-savior/getter-setter-postfix-idea-plugin/blob/master/README_EN.md">English 🇺🇸</a>
+</p>
+
+<h1 id="generateallsetter-postfix-completion-是做什么的？">GenerateAllSetter Postfix Completion 是做什么的？</h1>
+<ul>
+    <li>是一个 IDEA 插件，仅支持 Java 。</li>
+    <li>参考了 GenerateAllSetter 插件，作为其补充，添加了几个 Postfix 语法，功能与 GenerateAllSetter 基本一致。</li>
+    <li>在 pojo 变量之后通过
+        <code>.allset</code> 生成所有 setter
+    </li>
+    <li>在 pojo 变量之后通过
+        <code>.allsetn</code> 生成所有设置器（但没有默认值）
+    </li>
+    <li>在 pojo 变量之后通过
+        <code>.allget</code> 生成所有 getter
+    </li>
+    <li>在使用 @lombok.Builder 的 pojo 变量之后通过
+        <code>.allbuilder</code> 生成所有 setter 调用链
+    </li>
+</ul>
+<h1 id="为什么这个项目有用？">为什么这个项目有用？</h1>
+<ul>
+    <li>多一个选择，另外本人认为 Postfix 比较顺手，有助于进一步提高效率。</li>
+    <li>给大家提供一个 Postfix 插件开发模板，希望大家多开发一些提高效率的插件。</li>
+</ul>
+<h1 id="我该如何开始？">我该如何开始？</h1>
+<h2>1.安装插件</h2>
+<p>快点击 Install 吧!</p>
+<h2 id="2打开俺提供的示例项目">2.打开俺提供的示例项目</h2>
+<p>示例项目地址：
+    <a href="https://github.com/docer-savior/docer-savior-plugin-usage-examples">docer-savior-plugin-usage-examples</a>
+</p>
+<pre>
+或
+<code class="language-shell">git clone https://github.com/docer-savior/docer-savior-plugin-usage-examples</code>
+</pre>
+<p>下载后，找到
+    <code>cn.gudqs.example.genset.GenerateSetterAndGetterUsage</code> 文件
+</p>
+<h2 id="3插件使用">3.插件使用</h2>
+<p>演示所使用的基础类 </p>
+<pre>
+					<code class="language-java">
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+class Foo {
+
+    private Integer testInt;
+
+    private Long testLong;
+
+    private Float testFloat;
+
+    private Double testDouble;
+
+    private Boolean testBoolean;
+
+}
+</code>
+				</pre>
+<h3 id="生成-set">生成 set</h3>
+<pre>
+					<code class="language-java">public void usage01() {
+    // 用法1, 生成所有 set 方法, 带默认值, 通过 postfix
+    Foo foo = new Foo();
+    // 取消下面的注释, 光标位于 allset 后面, 按下 Tab 键
+//        foo.allset
+    // 即可得到下面结果, 且 foo.allset 会自动消失
+    foo.setTestInt(0);
+    foo.setTestLong(0L);
+    foo.setTestFloat(0f);
+    foo.setTestDouble(0D);
+    foo.setTestBoolean(false);
+}
+</code>
+				</pre>
+<h3 id="生成-get">生成 get</h3>
+<pre>
+					<code class="language-java">public void usage03() {
+    // 用法3, 生成所有 get 方法, 通过 postfix
+    Foo foo = new Foo();
+    // 取消下面的注释, 光标位于 allget 后面, 按下 Tab 键
+//        foo.allget
+    // 即可得到下面结果, 且 foo.allget 会自动消失
+    Integer testInt = foo.getTestInt();
+    Long testLong = foo.getTestLong();
+    Float testFloat = foo.getTestFloat();
+    Double testDouble = foo.getTestDouble();
+    Boolean testBoolean = foo.getTestBoolean();
+}
+</code>
+				</pre>
+<h2 id="lombok-的-builder-快速生成所有赋值方法的调用链">Lombok 的 @Builder 快速生成所有赋值方法的调用链</h2>
+<pre>
+					<code class="language-java">public void usage04() {
+    // 用法4, 生成所有 set 方法, 通过 builder, 通过 postfix
+    // 取消下面的注释, 光标位于 allbuilder 后面, 按下 Tab 键
+//        Foo.builder().allbuilder
+    // 即可得到下面结果
+    Foo foo = Foo.builder()
+            .testInt(0)
+            .testLong(0L)
+            .testFloat(0f)
+            .testDouble(0D)
+            .testBoolean(false)
+            .build();
+}
+</code>
+				</pre>
+<h2 id="根据一段含有源对象（a）目标对象（b）的-bsetxxxagetxxx-方法代码生成所有-set-方法以快速实现对象转换">根据一段含有源对象（a）/目标对象（b）的 b.setXxx(a.getXxx())
+    方法代码生成所有 set 方法以快速实现对象转换</h2>
+<pre>
+					<code class="language-java">public void usage05() {
+    // 用法5, 将 src 的数据赋值给 dest, 常用于两个不同类直接进行 convert(需字段名称相同), 通过 postfix
+    Foo src = new Foo();
+    Foo dest = new Foo();
+    // 取消下面的注释, 光标位于 convert 后面, 按下 Tab 键
+//        dest.setTestInt(src.getTestInt());.convert
+    // 即可得到下面结果
+    dest.setTestInt(src.getTestInt());
+    dest.setTestLong(src.getTestLong());
+    dest.setTestFloat(src.getTestFloat());
+    dest.setTestDouble(src.getTestDouble());
+    dest.setTestBoolean(src.getTestBoolean());
+}
+</code>
+				</pre>
+<h1 id="如果需要，我可以从哪里获得更多帮助？">如果需要，我可以从哪里获得更多帮助？</h1>
+<h2 id="通过提交-issue-来获取帮助">通过提交 Issue 来获取帮助</h2>
+<p>
+    <a href="https://github.com/docer-savior/getter-setter-postfix-idea-plugin/issues">点击访问 Github Issue</a>
+</p>
+<blockquote>
+    <p>欢迎大家提问，欢迎大家一起完善它！</p>
+</blockquote>
+<p>
+    <strong>另外，我接入了 IDEA 的错误处理组件，因此当发现插件报错提示时，按照 IDEA 提示，可查看错误信息，并一键上报给我（即自动生成一个 Issue）</strong>
+</p>
+<h2 id="通过查看-wiki-来获取更多说明">通过查看 Wiki 来获取更多说明</h2>
 <ul>
     <li>
-        Generate all setters via .allset after the pojo variable
+        <a href="https://github.com/docer-savior/getter-setter-postfix-idea-plugin/wiki/%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B">入门教程</a>
+    </li>
+</ul>
+<h2 id="贡献指南">贡献指南</h2>
+<p>
+    <a href="https://github.com/docer-savior/getter-setter-postfix-idea-plugin/blob/master/CONTRIBUTING_CN.md">贡献指南</a>
+</p>
+<h1 id="致谢名单">致谢名单</h1>
+<ul>
+    <li>
+        <a href="https://github.com/gejun123456/intellij-generateAllSetMethod">Github intellij-generateAllSetMethod</a>
     </li>
     <li>
-        Generate all setters via .allsetn after pojo variables (but without default values)
-    </li>
-    <li>
-        Generate all getters via .allget after pojo variable
-    </li>
-    <li>
-        Generate all setter call chain via .allbuilder after pojo variable with @lombok.Builder
+        <a href="https://github.com/yoke233/genSets">Github genSets</a>
     </li>
 </ul>

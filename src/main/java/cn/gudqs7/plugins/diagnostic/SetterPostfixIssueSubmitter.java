@@ -9,11 +9,11 @@ import org.jetbrains.annotations.NotNull;
  * @author wenquan
  * @date 2022/5/13
  */
-public class XxxIssueSubmitter extends AbstractGithubErrorReportSubmitter {
+public class SetterPostfixIssueSubmitter extends AbstractGithubErrorReportSubmitter {
 
     @NotNull
     protected String getGithubRepo() {
-        return "docer-savior/xxx-idea-plugin";
+        return "docer-savior/getter-setter-postfix-idea-plugin";
     }
 
     @Override
