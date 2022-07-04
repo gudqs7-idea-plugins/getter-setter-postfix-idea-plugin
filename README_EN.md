@@ -1,6 +1,6 @@
 [release-img]: https://img.shields.io/github/release/docer-savior/getter-setter-postfix-idea-plugin.svg
 [latest-release]: https://github.com/docer-savior/getter-setter-postfix-idea-plugin/releases/latest
-[plugin-img]: https://img.shields.io/badge/plugin-19320-orange.svg
+[plugin-img]: https://img.shields.io/badge/Idea%20Plugin-Setter%20Postfix%20Completion-orange.svg
 [plugin]: https://plugins.jetbrains.com/plugin/19320
 [jet-img]: https://img.shields.io/badge/plugin-Install%20Plugin-4597ff.svg
 [jet]: http://localhost:63342/api/installPlugin?action=install&pluginId=gudqs7.github.io.getter-setter-postfix
