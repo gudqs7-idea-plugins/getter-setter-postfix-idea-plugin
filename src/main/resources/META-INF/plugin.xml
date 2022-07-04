@@ -16,8 +16,8 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <errorHandler implementation="cn.gudqs7.plugins.diagnostic.SetterPostfixIssueSubmitter"/>
-        <notificationGroup displayType="BALLOON" id="Tip" bundle="group" key="notification.group.tip.name"/>
-        <notificationGroup displayType="STICKY_BALLOON" id="Error" bundle="group" key="notification.group.error.name"/>
+        <notificationGroup displayType="BALLOON" id="Setter Postfix Tip" bundle="group" key="notification.group.tip.name"/>
+        <notificationGroup displayType="STICKY_BALLOON" id="Setter Postfix Error" bundle="group" key="notification.group.error.name"/>
 
         <codeInsight.template.postfixTemplateProvider language="JAVA" implementationClass="cn.gudqs7.plugins.generate.postfix.GeneratePostfixTemplateProvider"/>
     </extensions>
