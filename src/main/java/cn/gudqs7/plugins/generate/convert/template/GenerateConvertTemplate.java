@@ -1,6 +1,6 @@
 package cn.gudqs7.plugins.generate.convert.template;
 
-import cn.gudqs7.plugins.common.util.jetbrain.PsiExpressionUtil;
+import cn.gudqs7.plugins.common.util.structure.PsiExpressionUtil;
 import cn.gudqs7.plugins.generate.base.BaseVar;
 import cn.gudqs7.plugins.generate.base.GenerateBase;
 import cn.gudqs7.plugins.generate.base.GenerateBaseTemplate;
@@ -28,13 +28,17 @@ public class GenerateConvertTemplate extends GenerateBaseTemplate {
             String tokenTypeName = tokenType.toString();
             switch (tokenTypeName) {
                 case "SEMICOLON":
+                    // 即分号 ;
                     psiElement = psiElement.getPrevSibling();
                     break;
                 case "RPARENTH":
-                    psiElement = psiElement.getParent().getParent();
+                    // 即右括号 )
+                    PsiElement methodParamExpression = psiElement.getParent();
+                    if (methodParamExpression != null) {
+                        psiElement = methodParamExpression.getParent();
+                    }
                     break;
                 default:
-                    psiElement = psiElement.getParent().getParent();
                     break;
             }
         }
