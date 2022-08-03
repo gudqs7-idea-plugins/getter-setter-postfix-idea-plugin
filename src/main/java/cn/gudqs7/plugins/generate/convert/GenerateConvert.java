@@ -29,13 +29,13 @@ public class GenerateConvert extends AbstractMethodListGenerate {
 
     @Override
     protected List<PsiMethod> getGenerateMethodListByClass(PsiClass psiClass) {
-        return PsiMethodUtil.getSetterMethod(psiClass);
+        return PsiMethodUtil.getSetterMethod(psiClass, false);
     }
 
     @Override
     @NotNull
     public String generateCodeByMethod(Set<String> newImportList, PsiMethod method) {
-        if (baseVar == null || varForGet == null) {
+        if (baseVar == null) {
             return "";
         }
         String generateName = baseVar.getVarName();
@@ -57,9 +57,9 @@ public class GenerateConvert extends AbstractMethodListGenerate {
     }
 
     @NotNull
-    private String getSetVal(String getMethodName) {
+    protected String getSetVal(String getMethodName) {
         PsiClass psiClassForGet = PsiTypesUtil.getPsiClass(varForGet.getVarType());
-        List<PsiMethod> methodList = PsiMethodUtil.getGetterMethod(psiClassForGet);
+        List<PsiMethod> methodList = PsiMethodUtil.getGetterMethod(psiClassForGet, false);
         Map<String, PsiMethod> methodMap = PsiMethodUtil.convertMethodListToMap(methodList);
         PsiMethod psiMethod = methodMap.get(getMethodName);
         // 若源对象无此字段(即无相应的 getter), 则仍保留此 set 语句, 但 set 的值为 null
